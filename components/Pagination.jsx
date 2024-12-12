@@ -10,7 +10,9 @@ import { useSearchParams } from 'react-router-dom';
 export default function Pagination({ itemCount, pageSize, currentPage }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const pageCount = Math.ceil(itemCount / pageSize);
-
+    if (pageCount <= 1){
+    return null;
+    }
     const changePage = (page) => {
         searchParams.set('page', page.toString());
         setSearchParams(searchParams);
